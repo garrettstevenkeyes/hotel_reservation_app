@@ -1,38 +1,34 @@
 package service;
 import model.Customer;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-
-// comment
+import java.util.*;
 
 public class CustomerService {
-    //
-    // create a collection to hold all of the customers
-    public Collection<Customer> customers = new HashSet<>();
+    // create a map of all the customers there are
+    public Collection<Customer> setOfCustomers = new HashSet<Customer>();
 
-    // add a customer object
+    // create a new object when a customer is being created
     public void addCustomer(String email, String firstName, String lastName) {
         // create a new customer
         Customer newCustomer = new Customer(email, firstName, lastName);
         // add the customer to the collection of customers
-        customers.add(newCustomer);
+        setOfCustomers.add(newCustomer);
     }
 
-    // get a customer if they are in the customer colletion
+    // retrieve a customer from the map
     public Customer getCustomer(String customerEmail){
-        for (Customer customer: customers) {
-            if (customerEmail.equals(customer.email)){
+        for (Customer customer : setOfCustomers) {
+            if((customer.getEmail()).equals(customerEmail)){
                 return customer;
             }
         }
+        return null;
     }
 
     // return all of the customers if they are in the customer collection
     public Collection<Customer> getAllCustomers(){
-        if (!customers.isEmpty()){
-            return customers;
+        if (!setOfCustomers.isEmpty()){
+            return setOfCustomers;
         }
+        return null;
     }
 }

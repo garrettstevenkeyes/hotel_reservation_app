@@ -8,8 +8,6 @@ public class Customer {
     private String lastName;
     public String email;
 
-    //fvdvdc
-
     // The email address has to
     private final String emailRegex = "^(.+)@(.+).(.+)$";
     private final Pattern pattern = Pattern.compile(emailRegex);
@@ -27,5 +25,9 @@ public class Customer {
     @Override
     public String toString(){
         return "Customer: " + firstName + " " + lastName + ". Email:" + email;
+    }
+
+    public String getEmail(){
+        return email;
     }
 }
