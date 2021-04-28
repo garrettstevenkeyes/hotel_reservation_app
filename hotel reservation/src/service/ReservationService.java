@@ -66,6 +66,7 @@ public class ReservationService {
     // find all of the rooms that are available
     //only return the rooms available greater or equal to the check in date and less or equal to the checkoutdate
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
+        Collection<IRoom> freeRooms = new HashSet<>();
 
     }
 
