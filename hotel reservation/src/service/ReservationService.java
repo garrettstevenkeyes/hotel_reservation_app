@@ -17,7 +17,17 @@ public class ReservationService {
     public Collection<IRoom> rooms = new HashSet<>();
     public Collection<Reservation> reservations = new HashSet<>();
 
-    //Collections to
+    private static ReservationService reservationService = null;
+
+    private ReservationService(){}
+
+    // create a static reservation service
+    public static ReservationService getInstance(){
+        if (null == reservationService){
+            reservationService = new ReservationService();
+        }
+        return reservationService;
+    }
 
     // Add a new room
     public void addRoom(IRoom room) {
@@ -55,12 +65,9 @@ public class ReservationService {
 
     // find all of the rooms that are available
     //only return the rooms available greater or equal to the check in date and less or equal to the checkoutdate
-//    public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
-////        Stream<IRoom> roomStream = rooms.stream().filter()
-//
-//
-//    }
+    public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
 
+    }
 
     //print all of the reservations
     public void printAllReservation(){
@@ -68,6 +75,4 @@ public class ReservationService {
             System.out.println(reservation);
         }
     }
-
-
 }

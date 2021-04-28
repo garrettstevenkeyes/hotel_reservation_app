@@ -5,6 +5,18 @@ import java.util.*;
 public class CustomerService {
     // create a map of all the customers there are
     public Collection<Customer> setOfCustomers = new HashSet<Customer>();
+    // creating a static reference for the customer service class
+    private static CustomerService customerService = null;
+
+    private CustomerService() {}
+
+    // create a static customer service
+    public static CustomerService getInstance() {
+        if (null == customerService) {
+            customerService = new CustomerService();
+        }
+        return customerService;
+    }
 
     // create a new object when a customer is being created
     public void addCustomer(String email, String firstName, String lastName) {
@@ -26,9 +38,6 @@ public class CustomerService {
 
     // return all of the customers if they are in the customer collection
     public Collection<Customer> getAllCustomers(){
-        if (!setOfCustomers.isEmpty()){
-            return setOfCustomers;
-        }
-        return null;
+        return setOfCustomers;
     }
 }
