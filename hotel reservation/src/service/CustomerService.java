@@ -3,8 +3,9 @@ import model.Customer;
 import java.util.*;
 
 public class CustomerService {
+//    private static Collection<Customer> setOfCustomers;
     // create a map of all the customers there are
-    public Collection<Customer> setOfCustomers = new HashSet<Customer>();
+    public static Collection<Customer> setOfCustomers = new HashSet<Customer>();
     // creating a static reference for the customer service class
     private static CustomerService customerService = null;
 
@@ -23,11 +24,11 @@ public class CustomerService {
         // create a new customer
         Customer newCustomer = new Customer(email, firstName, lastName);
         // add the customer to the collection of customers
-        setOfCustomers.add(newCustomer);
+        customerService.setOfCustomers.add(newCustomer);
     }
 
     // retrieve a customer from the map
-    public Customer getCustomer(String customerEmail){
+    public static Customer getCustomer(String customerEmail){
         for (Customer customer : setOfCustomers) {
             if((customer.getEmail()).equals(customerEmail)){
                 return customer;
