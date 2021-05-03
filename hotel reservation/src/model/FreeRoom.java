@@ -1,10 +1,12 @@
 package model;
 
 public class FreeRoom extends Room{
-    protected Integer price;
+    String roomNumber;
+    Double price;
+    RoomType enumeration;
 
-    public FreeRoom (Integer price) {
-        this.price = 0;
+    public FreeRoom(String roomNumber, Double price, RoomType enumeration) {
+        super(roomNumber, price = 0.0, enumeration);
     }
 
     @Override
