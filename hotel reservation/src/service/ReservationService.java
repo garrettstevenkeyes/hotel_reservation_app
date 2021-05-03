@@ -5,6 +5,7 @@ import model.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.stream.Stream;
 
 public class ReservationService {
@@ -14,8 +15,8 @@ public class ReservationService {
     private RoomType enumeration;
 
     //Collections to store all of the rooms
-    public Collection<IRoom> rooms = new HashSet<>();
-    public Collection<Reservation> reservations = new HashSet<>();
+    public static Collection<IRoom> rooms = new HashSet<>();
+    public static Collection<Reservation> reservations = new HashSet<>();
 
     private static ReservationService reservationService = null;
 
@@ -36,7 +37,7 @@ public class ReservationService {
     }
 
     // get a room from the collection of rooms
-    public IRoom getARoom (String roomId) {
+    public static IRoom getARoom(String roomId) {
         for (IRoom room: rooms){
             if ((room.getRoomNumber()).equals(roomId)) {
                 return room;
@@ -46,7 +47,7 @@ public class ReservationService {
     }
 
     // add a room reservation to the reservation set
-    public Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
+    public static Reservation reserveARoom(Customer customer, IRoom room, Date checkInDate, Date checkOutDate){
         Reservation newReservation = new Reservation(customer, room,checkInDate, checkOutDate);
         reservations.add(newReservation);
         rooms.remove(room);
@@ -54,13 +55,15 @@ public class ReservationService {
     }
 
     // get a customers reservation
-    public Reservation getCustomersReservation(Customer customer) {
+    public static Collection<Reservation> getCustomersReservation(Customer customer) {
+        Collection<Reservation> matchingReservations = new LinkedList<>();
         for (Reservation reservation : reservations) {
             if((reservation.getCustomer()).equals(customer)){
-                return reservation;
+                matchingReservations.add(reservation);
             }
+
         }
-        return null;
+        return matchingReservations;
     }
 
     // find all of the rooms that are available

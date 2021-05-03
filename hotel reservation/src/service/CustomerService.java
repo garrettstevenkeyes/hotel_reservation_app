@@ -20,7 +20,7 @@ public class CustomerService {
     }
 
     // create a new object when a customer is being created
-    public void addCustomer(String email, String firstName, String lastName) {
+    public static void addCustomer(String email, String firstName, String lastName) {
         // create a new customer
         Customer newCustomer = new Customer(email, firstName, lastName);
         // add the customer to the collection of customers

@@ -22,4 +22,16 @@ public class Reservation {
     public Customer getCustomer(){
         return customer;
     }
+
+    public IRoom getIroom() {
+        return iroom;
+    }
+
+    public Date getCheckInDate() {
+        return checkInDate;
+    }
+
+    public Date getCheckOutDate() {
+        return checkOutDate;
+    }
 }
