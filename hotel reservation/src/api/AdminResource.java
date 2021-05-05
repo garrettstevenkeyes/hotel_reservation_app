@@ -32,10 +32,11 @@ public class AdminResource {
 
     // Get all of the customers
     public Collection<Customer> getAllCustomers(){
-
+        return CustomerService.getAllCustomers();
     }
 
+    // print all of the reservations
     public void displayAllReservations(){
-
+        ReservationService.printAllReservation();
     }
 }

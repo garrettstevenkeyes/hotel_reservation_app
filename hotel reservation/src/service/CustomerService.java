@@ -38,7 +38,7 @@ public class CustomerService {
     }
 
     // return all of the customers if they are in the customer collection
-    public Collection<Customer> getAllCustomers(){
+    public static Collection<Customer> getAllCustomers(){
         return setOfCustomers;
     }
 }

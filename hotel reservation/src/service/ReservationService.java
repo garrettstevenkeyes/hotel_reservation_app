@@ -71,13 +71,12 @@ public class ReservationService {
         Collection<IRoom> freeRooms = new HashSet<>();
         //  loop through all the rooms and check for those that have not been reserved for
         //  that given checkindate and checkindate.
-
-
+        for()
 
     }
 
     //print all of the reservations
-    public void printAllReservation(){
+    public static void printAllReservation(){
         for(Reservation reservation : reservations) {
             System.out.println(reservation);
         }
