@@ -23,7 +23,7 @@ public class Reservation {
         return customer;
     }
 
-    public IRoom getIroom() {
+    public IRoom getIRoom() {
         return iroom;
     }
 

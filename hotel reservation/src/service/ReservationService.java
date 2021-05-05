@@ -2,10 +2,7 @@ package service;
 
 import model.*;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.LinkedList;
+import java.util.*;
 
 public class ReservationService {
 //    private String roomNumber;
@@ -66,13 +63,31 @@ public class ReservationService {
     }
 
     // find all of the rooms that are available
-    //only return the rooms available greater or equal to the check in date and less or equal to the checkoutdate
+    // only return the rooms available greater or equal to the check in date and less or equal to the checkoutdate
     public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         Collection<IRoom> freeRooms = new HashSet<>();
-        //  loop through all the rooms and check for those that have not been reserved for
-        //  that given checkindate and checkindate.
-        for()
+        // loop through all the rooms and check for those that have not been reserved for
+        // that given checkindate and checkindate.
+        Set<IRoom> reservedRooms = getReservedRooms(checkInDate, checkOutDate);
 
+        for (IRoom room : rooms){
+            if(reservedRooms.contains(room)){
+                freeRooms.add(room);
+            }
+        }
+        return freeRooms;
+    }
+
+    // helper function to check if a room is available after the checkin in date and before the checkout date
+    public Set<IRoom> getReservedRooms(Date checkInDate, Date checkOutDate) {
+        Set<IRoom> reservedRooms = new HashSet<>();
+        for (Reservation reservation: reservations){
+            IRoom room = reservation.getIRoom();
+            if ((reservation.getCheckInDate()).after(checkInDate) && (reservation.getCheckOutDate().before(checkOutDate))){
+                reservedRooms.add(room);
+            }
+        }
+        return reservedRooms;
     }
 
     //print all of the reservations
