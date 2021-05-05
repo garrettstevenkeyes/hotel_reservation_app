@@ -8,10 +8,10 @@ import java.util.HashSet;
 import java.util.LinkedList;
 
 public class ReservationService {
-    private String roomNumber;
-    private String roomId;
-    private Double price;
-    private RoomType enumeration;
+//    private String roomNumber;
+//    private String roomId;
+//    private Double price;
+//    private RoomType enumeration;
 
     //Collections to store all of the rooms
     public static Collection<IRoom> rooms = new HashSet<>();
@@ -30,8 +30,8 @@ public class ReservationService {
     }
 
     // Add a new room
-    public void addRoom(IRoom room) {
-        Room newRoom = new Room(roomNumber, price, enumeration);
+    public static void addRoom(IRoom room) {
+        Room newRoom = new Room(room.getRoomNumber(), room.getRoomPrice(), room.getRoomType());
         rooms.add(newRoom);
     }
 
@@ -71,6 +71,7 @@ public class ReservationService {
         Collection<IRoom> freeRooms = new HashSet<>();
         //  loop through all the rooms and check for those that have not been reserved for
         //  that given checkindate and checkindate.
+
 
 
     }
