@@ -64,10 +64,10 @@ public class ReservationService {
 
     // find all of the rooms that are available
     // only return the rooms available greater or equal to the check in date and less or equal to the checkoutdate
-    public Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
+    public static Collection<IRoom> findRooms(Date checkInDate, Date checkOutDate) {
         Collection<IRoom> freeRooms = new HashSet<>();
         // loop through all the rooms and check for those that have not been reserved for
-        // that given checkindate and checkindate.
+        // that given checkInDate and checkOutDate.
         Set<IRoom> reservedRooms = getReservedRooms(checkInDate, checkOutDate);
 
         for (IRoom room : rooms){
@@ -79,7 +79,7 @@ public class ReservationService {
     }
 
     // helper function to check if a room is available after the checkin in date and before the checkout date
-    public Set<IRoom> getReservedRooms(Date checkInDate, Date checkOutDate) {
+    public static Set<IRoom> getReservedRooms(Date checkInDate, Date checkOutDate) {
         Set<IRoom> reservedRooms = new HashSet<>();
         for (Reservation reservation: reservations){
             IRoom room = reservation.getIRoom();
@@ -95,5 +95,10 @@ public class ReservationService {
         for(Reservation reservation : reservations) {
             System.out.println(reservation);
         }
+    }
+
+    // return all of the customers if they are in the customer collection
+    public static Collection<IRoom> getAllRooms(){
+        return rooms;
     }
 }

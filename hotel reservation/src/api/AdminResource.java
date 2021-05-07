@@ -27,7 +27,7 @@ public class AdminResource {
 
     // Get all of the rooms
     public Collection<IRoom> getAllRooms(){
-
+        return ReservationService.getAllRooms();
     }
 
     // Get all of the customers
