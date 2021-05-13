@@ -61,8 +61,8 @@ public class AdminMenu {
     public int getAction() {
         System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Admin, 5. Exit. Enter your number selection!");
         Scanner scanner = new Scanner(System.in);
-
-        return scanner.nextLine().valueOf();
+        int scannerNumber = Integer.parseInt(scanner.next());
+        return scannerNumber;
     }
 
     // To view all customers
@@ -89,9 +89,9 @@ public class AdminMenu {
         System.out.println("Room added!");
     }
 
-    public static void main(String[] args){
+    public static void main(){
         //the admin menu can start here
         AdminMenu menuObject = new AdminMenu();
-        menuObject.startMenu();
+        MainMenu.main();
     }
 }

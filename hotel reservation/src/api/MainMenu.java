@@ -16,11 +16,11 @@ public class MainMenu {
             case 5:
                 // switch to admin menu here
                 AdminMenu aMenu = new AdminMenu();
-                aMenu.start();
+                AdminMenu.main();
         }
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         MainMenu menuObject = new MainMenu();
         menuObject.startActions();
     }
