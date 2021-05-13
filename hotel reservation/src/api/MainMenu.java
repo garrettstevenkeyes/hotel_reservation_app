@@ -28,7 +28,7 @@ public class MainMenu {
     public int getActions() {
         System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Admin, 5. Exit. Enter your number selection!");
         Scanner scanner = new Scanner(System.in);
-
-        return scanner.nextLine().valueOf();
+        int scannerNumber = Integer.parseInt(scanner.next());
+        return scannerNumber;
     }
 }
