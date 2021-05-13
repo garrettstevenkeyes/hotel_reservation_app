@@ -8,7 +8,6 @@ import service.CustomerService;
 import service.ReservationService;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class AdminMenu {
@@ -31,9 +30,25 @@ public class AdminMenu {
 
             // Add a Room
             case 4:
-                System.out.println("Please enter the room number, price, and a room type");
-                Scanner scanner = new Scanner(System.in);
-                addRoom();
+                // Enter the room number
+                System.out.println("What is the room number?");
+                Scanner scannerRoomNumber = new Scanner(System.in);
+                String roomNumber = scannerRoomNumber.next();
+
+                // Enter the price
+                System.out.println("What is the price?");
+                Double roomPrice = null;
+                Scanner scannerRoomPrice = new Scanner(System.in);
+                roomPrice = roomPrice.parseDouble(scannerRoomPrice.next());
+
+                // Enter the roomtype
+                System.out.println("Is the room and single or a double?");
+                Scanner scannerRoomType = new Scanner(System.in);
+                String roomType = scannerRoomType.next();
+                RoomType roomEnum = RoomType.valueOf(roomType);
+
+                addRoom(roomNumber, roomPrice, roomEnum);
+
             // other case statements
             case 5:
                 // switch back to main menu
@@ -69,16 +84,6 @@ public class AdminMenu {
     }
 
     public void addRoom(String roomNumber, Double price, RoomType enumeration) {
-        System.out.println("What is the room number?");
-        Scanner scannerRoomNumber = new Scanner(System.in);
-        String roomNumber =
-
-        System.out.println("What is the price?");
-        Scanner scannerRoomPrice = new Scanner(System.in);
-
-        System.out.println("What is the roomtype?");
-        Scanner scannerRoomType = new Scanner(System.in);
-
         Room newRoom = new Room(roomNumber, price, enumeration);
         ReservationService.addRoom(newRoom);
         System.out.println("Room added!");
