@@ -1,23 +1,87 @@
 package api;
 
+import model.Customer;
+import model.IRoom;
+import model.Room;
+import model.RoomType;
+import service.CustomerService;
+import service.ReservationService;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Scanner;
+
 public class AdminMenu {
     // other stuff here
     public void startActions(){
         int action = getAction(); //collect input
         switch(action){
-            case 1:
-                action1();
-                break;
-            case 2:
-                action2();
-                break;
 
-            // other case statments
+            // See all the customers
+            case 1:
+                customerViewer();
+                break;
+            // See all the rooms
+            case 2:
+                roomViewer();
+                break;
+            // See all reservations
             case 3:
+                ReservationService.printAllReservation();
+
+            // Add a Room
+            case 4:
+                System.out.println("Please enter the room number, price, and a room type");
+                Scanner scanner = new Scanner(System.in);
+                addRoom();
+            // other case statements
+            case 5:
                 // switch back to main menu
                 MainMenu mainMenu = new MainMenu();
                 mainMenu.startActions();
         }
+    }
+
+    // To get action class
+    public int getAction() {
+        System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Admin, 5. Exit. Enter your number selection!");
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine().valueOf();
+    }
+
+    // To view all customers
+    public void customerViewer(){
+        Collection <Customer> allCustomers = CustomerService.getAllCustomers();
+
+        for (Customer customer : allCustomers) {
+            System.out.println(customer.getFirstName() + " " + customer.getLastName());
+        }
+    }
+
+    // To view all rooms
+    public void roomViewer(){
+        Collection <IRoom> allRooms = ReservationService.getAllRooms();
+
+        for (IRoom room: allRooms) {
+            System.out.println(room);
+        }
+    }
+
+    public void addRoom(String roomNumber, Double price, RoomType enumeration) {
+        System.out.println("What is the room number?");
+        Scanner scannerRoomNumber = new Scanner(System.in);
+        String roomNumber =
+
+        System.out.println("What is the price?");
+        Scanner scannerRoomPrice = new Scanner(System.in);
+
+        System.out.println("What is the roomtype?");
+        Scanner scannerRoomType = new Scanner(System.in);
+
+        Room newRoom = new Room(roomNumber, price, enumeration);
+        ReservationService.addRoom(newRoom);
+        System.out.println("Room added!");
     }
 
     public static void main(String[] args){

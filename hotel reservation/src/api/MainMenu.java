@@ -1,12 +1,13 @@
 package api;
+import java.util.Scanner;
 
 public class MainMenu {
 
     public void startActions(){
         int actions = getActions(); // collect input
-        switch(action) {
+        switch(actions) {
             case 1:
-                action1();
+
                 break;
             case 2:
                 actions2();
@@ -22,5 +23,12 @@ public class MainMenu {
     public static void main(String[] args) {
         MainMenu menuObject = new MainMenu();
         menuObject.startActions();
+    }
+
+    public int getActions() {
+        System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Admin, 5. Exit. Enter your number selection!");
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner.nextLine().valueOf();
     }
 }
