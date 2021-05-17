@@ -7,12 +7,13 @@ import model.RoomType;
 import service.CustomerService;
 import service.ReservationService;
 
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.Scanner;
 
 public class AdminMenu {
     // other stuff here
-    public void startActions(){
+    public void startActions() throws ParseException {
         int action = getAction(); //collect input
         switch(action){
 
@@ -89,7 +90,7 @@ public class AdminMenu {
         System.out.println("Room added!");
     }
 
-    public static void main(){
+    public static void main() throws ParseException {
         //the admin menu can start here
         AdminMenu menuObject = new AdminMenu();
         MainMenu.main();

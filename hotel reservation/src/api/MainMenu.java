@@ -1,26 +1,99 @@
 package api;
+import model.Customer;
+import model.IRoom;
+import model.Reservation;
+import service.CustomerService;
+import service.ReservationService;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collection;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class MainMenu {
 
-    public void startActions(){
+    public void startActions() throws ParseException {
         int actions = getActions(); // collect input
         switch(actions) {
+            // reserve a room
             case 1:
+                System.out.println("Enter your email to reserve a room!");
+                Scanner scannerEmail = new Scanner(System.in);
+                String userEmail = scannerEmail.next().toString();
+
+                //Select a Room
+                System.out.print("Here are the rooms available!");
+                ReservationService.printAllRooms();
+
+                System.out.println("What room would you like?");
+                Scanner scannerRoomSelection = new Scanner(System.in);
+                String selectedRoom = scannerRoomSelection.next().toString();
+
+                System.out.println("What check in date would you like?");
+                Scanner scannerCheckInDate = new Scanner(System.in);
+                String customerCheckInDate = scannerCheckInDate.next().toString();
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                Date checkInDate = formatter.parse(customerCheckInDate);
+
+                System.out.println("What check out date would you like?");
+                Scanner scannerCheckOutDate = new Scanner(System.in);
+                String customerCheckOutDate = scannerCheckInDate.next().toString();
+                Date checkOutDate = formatter.parse(customerCheckInDate);
+
+                // Get a customer
+                Customer selectedCustomer = CustomerService.getCustomer(userEmail);
+                // Get a room
+                IRoom customerReservedRooms = ReservationService.getARoom(selectedRoom);
+
+                ReservationService.reserveARoom(selectedCustomer,customerReservedRooms,checkInDate,checkOutDate);
+
+                System.out.println("Room Reserved!");
+
+
+
+            // See my reservations
+            case 2:
+                System.out.println("What is the email address associated with your reservation?");
+                Scanner scannerCustomerEmail = new Scanner(System.in);
+                String customerEmail = scannerCustomerEmail.next().toString();
+
+                reservationViewer(customerEmail);
 
                 break;
-            case 2:
-                actions2();
-                break;
-            // ... other case statements
-            case 5:
-                // switch to admin menu here
+
+            // Create a customer account
+            case 3:
+                // First name
+                System.out.println("What is your first name?");
+                Scanner newScannerCustomerFirstName = new Scanner(System.in);
+                String newCustomerFirstName = newScannerCustomerFirstName.next().toString();
+
+                // Last name
+                System.out.println("What is your last name?");
+                Scanner newScannerLastName = new Scanner(System.in);
+                String newCustomerLastName = newScannerLastName.next().toString();
+
+                // Email
+                System.out.println("Enter your email");
+                Scanner newScannerEmail = new Scanner(System.in);
+                String newUserEmail = newScannerEmail.next().toString();
+
+                CustomerService.addCustomer(newCustomerFirstName, newCustomerLastName, newUserEmail);
+
+            // Open the admin menu
+            case 4:
                 AdminMenu aMenu = new AdminMenu();
                 AdminMenu.main();
+
+            case 5:
+                break;
+
         }
     }
 
-    public static void main() {
+    public static void main() throws ParseException {
         MainMenu menuObject = new MainMenu();
         menuObject.startActions();
     }
@@ -30,5 +103,15 @@ public class MainMenu {
         Scanner scanner = new Scanner(System.in);
         int scannerNumber = Integer.parseInt(scanner.next());
         return scannerNumber;
+    }
+
+    // To view all customers
+    public void reservationViewer(String customerEmail){
+        Collection<Reservation> allCustomerReservations = ReservationService.getCustomersReservation(CustomerService.getCustomer(customerEmail));
+
+        for (Reservation reservation : allCustomerReservations) {
+            System.out.println(reservation);
+        }
+
     }
 }

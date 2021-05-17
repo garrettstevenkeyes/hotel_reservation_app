@@ -101,4 +101,13 @@ public class ReservationService {
     public static Collection<IRoom> getAllRooms(){
         return rooms;
     }
+
+    public static void printAllRooms(){
+        Collection<IRoom> availableRooms = getAllRooms();
+
+        for (IRoom room: availableRooms){
+            System.out.println(room);
+        }
+
+    }
 }
