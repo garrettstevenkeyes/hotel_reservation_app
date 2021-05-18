@@ -60,7 +60,7 @@ public class AdminMenu {
 
     // To get action class
     public static int getAction() {
-        System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Add a room, 5. Go to the main menu! Enter your number selection!");
+        System.out.println("1. See all customers, 2. See all rooms, 3. See all reservations, 4. Add a room, 5. Go to the main menu! Enter your number selection!");
         Scanner scanner = new Scanner(System.in);
         int scannerNumber = Integer.parseInt(scanner.next());
         return scannerNumber;
