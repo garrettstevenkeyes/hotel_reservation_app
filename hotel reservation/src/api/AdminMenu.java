@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class AdminMenu {
     // other stuff here
-    public void startActions() throws ParseException {
+    public static void startActions() throws ParseException {
         int action = getAction(); //collect input
         switch(action){
 
@@ -59,15 +59,15 @@ public class AdminMenu {
     }
 
     // To get action class
-    public int getAction() {
-        System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Admin, 5. Exit. Enter your number selection!");
+    public static int getAction() {
+        System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Add a room, 5. Go to the main menu! Enter your number selection!");
         Scanner scanner = new Scanner(System.in);
         int scannerNumber = Integer.parseInt(scanner.next());
         return scannerNumber;
     }
 
     // To view all customers
-    public void customerViewer(){
+    public static void customerViewer(){
         Collection <Customer> allCustomers = CustomerService.getAllCustomers();
 
         for (Customer customer : allCustomers) {
@@ -76,7 +76,7 @@ public class AdminMenu {
     }
 
     // To view all rooms
-    public void roomViewer(){
+    public static void roomViewer(){
         Collection <IRoom> allRooms = ReservationService.getAllRooms();
 
         for (IRoom room: allRooms) {
@@ -84,15 +84,15 @@ public class AdminMenu {
         }
     }
 
-    public void addRoom(String roomNumber, Double price, RoomType enumeration) {
+    public static void addRoom(String roomNumber, Double price, RoomType enumeration) {
         Room newRoom = new Room(roomNumber, price, enumeration);
         ReservationService.addRoom(newRoom);
         System.out.println("Room added!");
     }
 
-    public static void main() throws ParseException {
+    public static void main(String [] args) throws ParseException {
         //the admin menu can start here
         AdminMenu menuObject = new AdminMenu();
-        MainMenu.main();
+        menuObject.startActions();
     }
 }

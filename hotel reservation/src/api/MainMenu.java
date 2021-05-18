@@ -85,7 +85,7 @@ public class MainMenu {
             // Open the admin menu
             case 4:
                 AdminMenu aMenu = new AdminMenu();
-                AdminMenu.main();
+                AdminMenu.startActions();
 
             case 5:
                 break;
@@ -93,7 +93,7 @@ public class MainMenu {
         }
     }
 
-    public static void main() throws ParseException {
+    public static void main(String [] args) throws ParseException {
         MainMenu menuObject = new MainMenu();
         menuObject.startActions();
     }
@@ -112,6 +112,5 @@ public class MainMenu {
         for (Reservation reservation : allCustomerReservations) {
             System.out.println(reservation);
         }
-
     }
 }
