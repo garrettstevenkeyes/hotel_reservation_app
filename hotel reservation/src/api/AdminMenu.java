@@ -21,6 +21,7 @@ public class AdminMenu {
             case 1:
                 customerViewer();
                 AdminMenu.startActions();
+
             // See all the rooms
             case 2:
                 roomViewer();
@@ -30,6 +31,7 @@ public class AdminMenu {
             case 3:
                 ReservationService.printAllReservation();
                 AdminMenu.startActions();
+
             // Add a Room
             case 4:
                 // Enter the room number
@@ -47,10 +49,26 @@ public class AdminMenu {
                 System.out.println("Is the room and single or a double?");
                 Scanner scannerRoomType = new Scanner(System.in);
                 String roomType = scannerRoomType.next();
-                RoomType roomEnum = RoomType.valueOf(roomType);
 
-                addRoom(roomNumber, roomPrice, roomEnum);
-                AdminMenu.startActions();
+                if (roomType.equals("single")) {
+                    RoomType formattedRoomType = RoomType.SINGLE;
+
+                    addRoom(roomNumber, roomPrice, formattedRoomType);
+                    AdminMenu.startActions();
+                }
+
+                else if (roomType.equals("double")) {
+                    RoomType formattedRoomType = RoomType.DOUBLE;
+
+                    addRoom(roomNumber, roomPrice, formattedRoomType);
+                    AdminMenu.startActions();
+                }
+
+                else {
+                    System.out.println("Not an acceptable input!");
+                    AdminMenu.startActions();
+                }
+
 
             // other case statements
             case 5:

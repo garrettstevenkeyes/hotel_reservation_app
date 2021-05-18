@@ -17,7 +17,8 @@ public class MainMenu {
     public static void startActions() throws ParseException {
         int actions = getActions(); // collect input
         switch(actions) {
-            // reserve a room
+
+            // Make a reservation
             case 1:
                 System.out.println("Enter your email to reserve a room!");
                 Scanner scannerEmail = new Scanner(System.in);
@@ -34,7 +35,7 @@ public class MainMenu {
                 System.out.println("What check in date would you like?");
                 Scanner scannerCheckInDate = new Scanner(System.in);
                 String customerCheckInDate = scannerCheckInDate.next().toString();
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy", Locale.ENGLISH);
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
                 Date checkInDate = formatter.parse(customerCheckInDate);
 
                 System.out.println("What check out date would you like?");
@@ -83,11 +84,13 @@ public class MainMenu {
                 CustomerService.addCustomer(newCustomerFirstName, newCustomerLastName, newUserEmail);
 
                 MainMenu.startActions();
+
             // Open the admin menu
             case 4:
                 AdminMenu aMenu = new AdminMenu();
                 AdminMenu.startActions();
 
+            // Exit the program
             case 5:
                 break;
 
