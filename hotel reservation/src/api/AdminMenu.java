@@ -22,7 +22,7 @@ public class AdminMenu {
                 customerViewer();
                 AdminMenu.startActions();
 
-            // See all the rooms
+            // See all available the rooms
             case 2:
                 roomViewer();
                 AdminMenu.startActions();
@@ -95,7 +95,7 @@ public class AdminMenu {
         }
     }
 
-    // To view all rooms
+    // To view all available rooms
     public static void roomViewer(){
         Collection <IRoom> allRooms = ReservationService.getAllRooms();
 
