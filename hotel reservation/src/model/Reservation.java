@@ -16,7 +16,7 @@ public class Reservation {
 
     @Override
     public String toString(){
-        return "Customer: " + customer + "Room: " + iroom + "Check in Date: " + checkInDate + "Check out Date: " + checkOutDate;
+        return customer + " Room: " + iroom.getRoomNumber() + ". Check in Date: " + checkInDate + ". Check out Date: " + checkOutDate;
     }
 
     public Customer getCustomer(){
