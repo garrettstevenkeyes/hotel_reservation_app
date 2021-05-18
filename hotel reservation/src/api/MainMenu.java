@@ -92,6 +92,7 @@ public class MainMenu {
 
             // Exit the program
             case 5:
+                System.out.println("Goodbye!");
                 break;
 
         }
