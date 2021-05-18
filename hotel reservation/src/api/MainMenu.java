@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    public void startActions() throws ParseException {
+    public static void startActions() throws ParseException {
         int actions = getActions(); // collect input
         switch(actions) {
             // reserve a room
@@ -51,7 +51,7 @@ public class MainMenu {
 
                 System.out.println("Room Reserved!");
 
-
+                MainMenu.startActions();
 
             // See my reservations
             case 2:
@@ -61,7 +61,7 @@ public class MainMenu {
 
                 reservationViewer(customerEmail);
 
-                break;
+                MainMenu.startActions();
 
             // Create a customer account
             case 3:
@@ -82,6 +82,7 @@ public class MainMenu {
 
                 CustomerService.addCustomer(newCustomerFirstName, newCustomerLastName, newUserEmail);
 
+                MainMenu.startActions();
             // Open the admin menu
             case 4:
                 AdminMenu aMenu = new AdminMenu();
@@ -98,7 +99,7 @@ public class MainMenu {
         menuObject.startActions();
     }
 
-    public int getActions() {
+    public static int getActions() {
         System.out.println("1. Find and reserve a room, 2. See my reservation, 3. Create an account, 4. Go to the Admin window, 5. Exit. Enter your number selection!");
         Scanner scanner = new Scanner(System.in);
         int scannerNumber = Integer.parseInt(scanner.next());
@@ -106,7 +107,7 @@ public class MainMenu {
     }
 
     // To view all customers
-    public void reservationViewer(String customerEmail){
+    public static void reservationViewer(String customerEmail){
         Collection<Reservation> allCustomerReservations = ReservationService.getCustomersReservation(CustomerService.getCustomer(customerEmail));
 
         for (Reservation reservation : allCustomerReservations) {

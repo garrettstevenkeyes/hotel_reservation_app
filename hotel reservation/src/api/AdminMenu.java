@@ -20,15 +20,16 @@ public class AdminMenu {
             // See all the customers
             case 1:
                 customerViewer();
-                break;
+                AdminMenu.startActions();
             // See all the rooms
             case 2:
                 roomViewer();
-                break;
+                AdminMenu.startActions();
+
             // See all reservations
             case 3:
                 ReservationService.printAllReservation();
-
+                AdminMenu.startActions();
             // Add a Room
             case 4:
                 // Enter the room number
@@ -49,6 +50,7 @@ public class AdminMenu {
                 RoomType roomEnum = RoomType.valueOf(roomType);
 
                 addRoom(roomNumber, roomPrice, roomEnum);
+                AdminMenu.startActions();
 
             // other case statements
             case 5:
