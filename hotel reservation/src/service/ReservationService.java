@@ -53,7 +53,7 @@ public class ReservationService {
     // get a customers reservation
     public static Collection<Reservation> getCustomersReservation(Customer customer) {
         Collection<Reservation> matchingReservations = new LinkedList<>();
-        for (Reservation reservation : reservations) {
+        for (Reservation reservation : ReservationService.reservations) {
             if((reservation.getCustomer()).equals(customer)){
                 matchingReservations.add(reservation);
             }
