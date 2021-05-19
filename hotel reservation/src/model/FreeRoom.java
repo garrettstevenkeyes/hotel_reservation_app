@@ -13,4 +13,9 @@ public class FreeRoom extends Room{
     public String toString() {
         return "This room is free!";
     }
+
+    @Override
+    public boolean isFree(){
+        return false;
+    }
 }

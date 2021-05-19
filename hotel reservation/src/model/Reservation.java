@@ -1,5 +1,6 @@
 package model;
 import java.util.Date;
+import java.util.Objects;
 
 public class Reservation {
     Customer customer;
@@ -17,6 +18,22 @@ public class Reservation {
     @Override
     public String toString(){
         return customer + " Room: " + iroom.getRoomNumber() + ". Check in Date: " + checkInDate + ". Check out Date: " + checkOutDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Reservation)) return false;
+        Reservation that = (Reservation) o;
+        return customer.equals(that.customer) &&
+                iroom.equals(that.iroom) &&
+                checkInDate.equals(that.checkInDate) &&
+                checkOutDate.equals(that.checkOutDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customer, iroom, checkInDate, checkOutDate);
     }
 
     public Customer getCustomer(){

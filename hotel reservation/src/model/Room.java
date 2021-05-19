@@ -38,7 +38,6 @@ public class Room implements IRoom{
         this.enumeration = enumeration;
     }
 
-    @Override
     public boolean isFree() {
         return false;
     }
