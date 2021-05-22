@@ -48,7 +48,13 @@ public class MainMenu {
                 // Get a room
                 IRoom customerReservedRooms = ReservationService.getARoom(selectedRoom);
 
-                ReservationService.reserveARoom(selectedCustomer,customerReservedRooms,checkInDate,checkOutDate);
+                try {
+                    ReservationService.reserveARoom(selectedCustomer, customerReservedRooms, checkInDate, checkOutDate);
+                }
+                catch (IllegalArgumentException exception) {
+                    System.out.println("Please try again with valid information!");
+                    MainMenu.startActions();
+                }
 
                 System.out.println("Room Reserved!");
 
@@ -81,8 +87,12 @@ public class MainMenu {
                 Scanner newScannerEmail = new Scanner(System.in);
                 String newUserEmail = newScannerEmail.next().toString();
 
-                CustomerService.addCustomer(newCustomerFirstName, newCustomerLastName, newUserEmail);
-
+                try {
+                    CustomerService.addCustomer(newCustomerFirstName, newCustomerLastName, newUserEmail);
+                }
+                catch (IllegalArgumentException exception) {
+                    System.out.println("Please try again! Incorrect input.");
+                }
                 MainMenu.startActions();
 
             // Open the admin menu
