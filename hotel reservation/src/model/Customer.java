@@ -4,9 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Customer {
-    private String firstName;
-    private String lastName;
-    public String email;
+    private final String firstName;
+    private final String lastName;
+    public final String email;
 
 
 
